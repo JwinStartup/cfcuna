@@ -16,7 +16,7 @@ export default function Footer() {
         </p>
         
     </div>
-    <p className='w-[300px] text-white font-light tracking-wide pt-3 '>existe dépuis 2023 au sein de l'université NANGUY ABROUGOUA</p>
+    <p className='w-[300px] text-white font-light tracking-wide pt-3 '>existe dépuis 2023 au sein de l'université NANGUI ABROUGOUA</p>
     <div  className='flex flex-row space-x-10 mt-5'>
         <div className='cursor-pointer bg-blue-500 w-10 h-10 rounded-full flex items-center justify-center'>
         <CgFacebook size={30} color='white'/>
