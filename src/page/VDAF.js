@@ -6,6 +6,10 @@ import SurPage from '../component/SurPage.js'
 import INFORMATION_VDAF from '../component/INFORMATION_VDAF.js'
 const rub=[
   {
+    nom:'Context et justification',
+    lien:'#cj'
+  },
+  {
     nom:'Besoins de formation',
     lien:'#bf'
   },

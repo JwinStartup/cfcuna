@@ -5,59 +5,49 @@ export default function INFORMATION_VDAF() {
   return (
     <div>
         <ul className=''>
+            <li id='cj'  className='font-medium text-2xl tracking-wider py-3 px-1'>Context et justification</li>
+            <div className='mb-5'>
+                <p className='text-lg text-gray-600 font-normal'>
+                L’originalité de ce master repose sur la prise en compte des différents aspects des problèmes liés à la reproduction des déchets générés par l’agro-industrie et l’industrie forestières, les impacts desdits déchets sur l’environnement et la santé humaine, et surtout la possibilité de valoriser ceux-ci en produits à valeurs ajoutées. En effet, l’économie de la Côte d’Ivoire, à l’instar de celle de nombreux pays subsahariens, est basée sur l’agriculture. Le développement de l’exploitation agricole ou forestière génère de nombreux déchets. Ces déchets constituent une préoccupation majeure aussi bien pour les petites et moyennes entreprises (PME) que pour les grands groupes industriels. En effet, ceux-ci sont tenus, au terme de diverses normes, d’assurer la valorisation des déchets, s’ils veulent obtenir des financements sur le plan international ou trouver des marchés à leurs productions. Par ailleurs, la valorisation des déchets n’a presque pas été prise en compte dans les politiques de formation. Pourtant, cette valorisation pourrait permettre d’améliorer les conditions de vie des exploitants à travers la vente des nouveaux produits.
+                En somme, il apparait clairement l’intérêt de former des ressources humaines compétentes pour encadrer les productions des déchets agroindustriels et de foresteries, pour transformer ceux-ci en produits nouveaux à valeur ajoutée, et pour conseiller les politiques d’exploitation soutenable des ressources naturelles.
+                </p>
+            </div>
             <li id='bf'  className='font-medium text-2xl tracking-wider py-3 px-1'>Besoins de formation</li>
             <div className='mb-5'>
                 <p className='text-lg text-gray-600 font-normal'>
-                La multiplication des sources d’information et la capacité croissante des outils de stockage d’information nécessitent d’une part la compréhension des fondements et des théories sous-jacents à la mise en place des systèmes de recueil d’information et des méthodes de traitement d’information. D’autre part, elles nécessitent la maitrise des outils informatiques d’analyse et d’aide à la décision afin de collecter et traiter les données collectées. 
+                La formation met l’accent sur les aspects de la production des déchets agroindustriels, leurs valorisations industrielles, et les impacts desdits déchets sur l’environnement et la santé humaine. Le master MVDAF vise à former des cadres capables de conseiller les meilleures pratiques de production et de valorisation des déchets agroindustriels, et d’orienter les politiques de production agroindustrielles soutenables.
                 </p>
             </div>
-            <li id='cac'  className='font-medium text-2xl tracking-wider py-3 px-1'>Connaissances à acquérir </li>
+            <li id='cac'  className='font-medium text-2xl tracking-wider py-3 px-1'>Competence à acquierir</li>
             <div className='mb-5'>
                 <p className='text-lg text-gray-600 font-normal'>
-                <dd className='indent-3 space-y-2'>
-                    <dt>• Conception, mise en place et gestion d'infrastructures hébergeant les données d'une entreprise :
-                        <dd className='indent-10 ml-3'>
-                            <dt>- Conception, mise en oeuvre et gestion des bases de données relationnelles ;</dt>
-                        
-                            <dt>- Conception et mise en place de bases de données multi-dimensionnelles </dt>
-                        
-                            <dt>- Interrogation de bases de données </dt>
-                        
-                            <dt>- Conception et mise en place d'entrepôts de données (Data Warehouse) </dt>
-                        
-                            <dt>- Maîtrise des SGBD relationnels (ACCES, MySQL,  ORACLE, ...) et des langages d'interrogation de données (SQL) ;</dt>
-                        
-                            <dt>- Exploitation des informations des bases de données et des entrepôts de données grâce aux techniques statistiques et de Data mining ;</dt>
-                        
-                            <dt>- Extraction d'information et présentation de données facilement exploitables pour les décideurs ;</dt>
-                        </dd>
+                Le titulaire du Master MVDAF est capable de :
+                <dd>
+                    <dt>
+                    •	organiser tous les systèmes de collectes, de valorisation et traitement des déchets agroindustriels et de foresteries ;
                     </dt>
-                    <dt>• Production d’indicateurs (tableaux de bord) pour la communication ou l’aide à la prise de décision ;</dt>
-                    <dt>• Restitution, analyse et synthèse de l'information ;</dt>
-                    <dt>• Maîtrise des techniques statistiques (échantillonnage, tests, estimation, corrélation, analyse de données, régression...):
-                        <dd className='indent-10 ml-3'> 
-                            <dt>
-                            - Maîtrise des techniques de Data mining (associations, arbres de décisions, scores, réseaux de neurones…) ;
-                            </dt>
-                            <dt>
-                            - Manipulation d'outils de Data mining du marché ;
-                            </dt>
-                        </dd>
+                    <dt>
+                    •	conseiller les procédés de transformations des déchets agroindustriels et de foresteries ;
                     </dt>
-                    <dt>• Exploitation de l'informatique communicante (Internet, Intranet) et de l'infrastructure client/serveur 
-                        <dd className='indent-10 ml-3'> 
-                            <dt>
-                            - 	Conception de sites WEB dynamiques
-                            </dt>
-                            <dt>
-                            -  Gestion des bases de données à travers le WEB ;
-                            </dt>
-                            <dt>
-                            -  Publication de toutes sortes d'informations sur les interfaces des navigateurs WEB.
-                            </dt>
-                        </dd>
+                    <dt>
+                    •	analyser les problématiques liées aux pollutions ;
                     </dt>
-
+                    <dt>
+                    •	connaître et comprendre les stratégies de valorisation industrielle des déchets agroindustriels et de foresteries ;
+                    </dt>
+                    <dt>
+                    •	réaliser un montage de projets de valorisation des déchets agroindustriels et de foresteries ;
+                    </dt>
+                    <dt>
+                    •	conseiller les choix méthodologiques conduisant à l’extraction, la purification et l’analyse des compositions d’un produit isolé ;
+                    </dt>
+                    <dt>
+                    •	savoir mener un transfert de technologie de laboratoire vers la production ;
+                    </dt>
+                    <dt>
+                    •	savoir créer une entreprise, sur base de la transformation des déchets agroindustriels et de foresteries.
+                    </dt>
+                   
                 </dd>
                 </p>
             </div>
@@ -65,7 +55,37 @@ export default function INFORMATION_VDAF() {
             <li id='pv'  className='font-medium text-2xl tracking-wider py-3 px-1 '>Public visé </li>
             <div className='mb-5'>
                 <p className='text-lg text-gray-600 font-normal'>
-                Le parcours statistique et informatique décisionnelle (SID) s’adresse aux salariés, aux demandeurs d'emploi et aux étudiants ayant validé des parcours incluant des modules de statistique et d’informatique 
+                Les candidats au Master MVDAF doit remplir les conditions suivantes : 
+                
+                         <dd>
+                             <dt>  - avoir validé un Bac + 4 (Maîtrise, Master 1, Ingénieur ou équivalent) en sciences de la nature,sciences de l’environnement, génie civil, agronomie ou dans des domaines connexes,  
+                            </dt>
+                             <dt>  - soit être salarié désireux de faire la formation ;
+                            </dt>
+                             <dt>  - soit être salarié souhaitant valider des compétences en Valorisation des déchets agropastoraux par la VAE ;
+                            </dt>
+                             <dt>  - soit être demandeur d'emploi ;
+                            </dt>
+                             <dt>  - soit être étudiant de moins de 27 ans.
+                            </dt>
+                        </dd>
+                </p>
+            </div>
+            <li id='pv'  className='font-medium text-2xl tracking-wider py-3 px-1 '>Partenaires potentiels </li>
+            <div className='mb-5'>
+            <p className='text-lg text-gray-600 font-normal'>
+                <dd>
+                    <dt>•	FIRCA</dt>
+                    <dt>•	MINADER</dt>
+                        <dt>•	UVICOCI</dt>
+                        <dt>•	ADERCI</dt>
+                        <dt>•	IPCI</dt>
+                        <dt>•	ANADER</dt>
+                        <dt>•	CNRA</dt>
+                        <dt>•	AGRIVAR</dt>
+                        <dt>•	FDFP</dt>
+
+                </dd>
                 </p>
             </div>
             <li id='ddc'  className='font-medium text-2xl tracking-wider py-3 px-1 '>Déroulement des cours</li>

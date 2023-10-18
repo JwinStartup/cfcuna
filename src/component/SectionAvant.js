@@ -24,7 +24,7 @@ export default function SectionAvant() {
       <p className='text-[60px] absolute left-[70px] top-[170px] z-10 w-[540px] text-center text-white'>
       Etudier au CFC de l’Université NANGUI ABROGOUA
       </p>
-    <img className='absolute right-[150px] top-[140px]' src={require('../assets/people.png')} alt='' width={340} />
+   {/* <img className='absolute right-[150px] top-[140px]' src={require('../assets/people.png')} alt='' width={340} />*/}
     </div>
   )
 }

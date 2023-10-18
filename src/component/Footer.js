@@ -38,7 +38,7 @@ export default function Footer() {
       </div>
       <div className='space-y-5'>
         <div className='flex flex-end cursor-pointer'> <FaMapPin size={25} color='green'/>
-        <p className='text-white'> Université NANGUY ABROUGOUA</p>
+        <p className='text-white'> Université NANGUI ABROUGOUA</p>
         </div>
         <div className='flex flex-end cursor-pointer'> <FcCalendar size={25} />
         <p className='text-white'> Du Lundi au Vendredi de 08h à 16h </p>
