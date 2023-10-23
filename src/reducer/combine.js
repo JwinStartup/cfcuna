@@ -1,6 +1,10 @@
 import { combineReducers } from "redux";
-import  preinscritSlice  from "./preinscrit";
+import { userReducer } from "./user.js";
+import { preinscritReducer } from "./preinscrit";
 
 export default combineReducers({
-    preinscritSlice :preinscritSlice,
+  userReducer,
+    preinscritReducer
 });
+
+

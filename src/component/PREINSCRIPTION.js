@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import Header from '../component/header'
 import {ImCheckboxChecked,ImCheckboxUnchecked} from 'react-icons/im' 
-import {FaChevronDown, FaChevronUp} from 'react-icons/fa' 
+import {FaChevronCircleLeft, FaChevronDown, FaChevronUp} from 'react-icons/fa' 
 import { useForm } from "react-hook-form";
 import { useDispatch,  } from "react-redux";
-import {preinscritActions}from '../reducer/preinscrit'
-export default function PREINSCRIPTION() {
+import {preinscription, preinscritActions}from '../reducer/preinscrit'
+export default function PREINSCRIPTION({retour}) {
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
     const [maskCNI,setMaskCNI]=useState(false) 
@@ -45,23 +44,51 @@ export default function PREINSCRIPTION() {
         setFileCV(p)
      }
      const onSubmit = (data) => {
+        // console.log(filiere(data.filiere),niveau(data.niveau))
       dispatch(preinscritActions.faire({
         nom:data.nom,
         prenoms:data.prenoms,
         email:data.email,
         annee:data.annee,
-        diplome:data.diplome,
+        niveau:niveau(data.niveau),
         tel:data.tel,
-        filiere:data.filiere
+        filiere:filiere(data.filiere)
       }))
     }
+    const filiere =(p)=>{
+      switch (p) {
+        case 'Qualité, Securité et Environnement (QSE)':
+         return 'QSE'
+        case 'Statistique et Informatique Décisionnelle (SID)':
+         return 'SID'
+        case 'Valorisation des Dechets Agricoles et Forestiers (VDAF)':
+         return 'VDAF'
+        default:
+          return 'QSE'
+      }
+    }
+    const niveau =(p)=>{
+      switch (p) {
+        case 'Preinscription en Licence 3':
+         return 'Licence3'
+        case 'Preinscription en Master 1':
+         return 'Master1'
+        case 'Preinscription en Master 2':
+         return 'Master2'
+        default:
+          return 'Licence3'
+      }
+    }
   return (
-    <div>
-      <Header/>
-      <form className='flex justify-center items-center flex-col space-y-5 p-9 overflow-y-scroll' onSubmit={handleSubmit(onSubmit)} >
-            <p className='text-[45px] text-blue-600 font-medium'>PRE-INSCRIPTION EN LIGNE</p>
+    
+      <form className='flex flex-col items-center ml-40 mb-16 h-full overflow-y-scroll' onSubmit={handleSubmit(onSubmit)} >
+            <div className='flex w-full items-center justify-center cursor-pointer mb-6'> <FaChevronCircleLeft size={30} color='gray' onClick={retour}  />
+               <p className='text-xl text-gray-400 font-bold mx-3 text-center' >Faire une preinscription</p>
+            </div>
+            
+        <div className=' flex-col  flex justify-center  items-center space-y-6'>
             <div className='flex flex-row'>
-                <p>Année Academique </p>
+                <p> Année Academique</p>
                 <select {...register("annee")} defaultValue='2023-2024' className='outline-none border-b-2 py-1 text-gray-400 p-2 text-sm'>
                     <option className='py-1 ' >2023-2024</option>
                     </select>
@@ -76,7 +103,7 @@ export default function PREINSCRIPTION() {
             <option>Statistique et Informatique Décisionnelle (SID)</option>
             <option>Valorisation des Dechets Agricoles et Forestiers (VDAF)</option>
         </select>
-        <select {...register("diplome")} defaultValue='Preinscription en Licence 3' className='outline-none w-[600px] border-b-2 py-1 text-lg'>
+        <select {...register("niveau")} defaultValue='Preinscription en Licence 3' className='outline-none w-[600px] border-b-2 py-1 text-lg'>
             <option>Preinscription en Licence 3</option>
             <option>Preinscription en Master 1</option>
             <option>Preinscription en Master 2</option>
@@ -176,11 +203,11 @@ export default function PREINSCRIPTION() {
                      onChange={(e)=>onChangeFileCNI(e.target.files[0])} 
                       />}
         </div>
-
-        <button type='submit' className='outline-none  text-white bg-green-700 hover:bg-green-800  font-medium rounded-lg text-lg  px-5 py-2.5 mr-2 mb-2'>
+         
+        <button type='submit' className='outline-none mb-5  text-white bg-green-700 hover:bg-green-800  font-medium rounded-lg text-lg  px-5 py-2.5 mr-2 '>
          <span>   Se preinscrire</span>
         </button>
+        </div>
       </form>
-    </div>
   )
 }

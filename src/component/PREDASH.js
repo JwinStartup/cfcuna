@@ -4,7 +4,7 @@ import {ImCheckboxChecked,ImCheckboxUnchecked} from 'react-icons/im'
 import {FaChevronDown, FaChevronUp} from 'react-icons/fa' 
 import { useForm } from "react-hook-form";
 import { useDispatch,  } from "react-redux";
-import {preinscritActions}from '../reducer/preinscrit'
+import {preinscription}from '../reducer/preinscrit'
 export default function PREINSCRIPTION() {
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
@@ -45,12 +45,12 @@ export default function PREINSCRIPTION() {
         setFileCV(p)
      }
      const onSubmit = (data) => {
-      dispatch(preinscritActions.faire({
+      dispatch(preinscription({
         nom:data.nom,
         prenoms:data.prenoms,
         email:data.email,
         annee:data.annee,
-        diplome:data.diplome,
+        niveau:data.niveau,
         tel:data.tel,
         filiere:data.filiere
       }))
@@ -76,7 +76,7 @@ export default function PREINSCRIPTION() {
             <option>Statistique et Informatique Décisionnelle (SID)</option>
             <option>Valorisation des Dechets Agricoles et Forestiers (VDAF)</option>
         </select>
-        <select {...register("diplome")} defaultValue='Preinscription en Licence 3' className='outline-none w-[600px] border-b-2 py-1 text-lg'>
+        <select {...register("niveau")} defaultValue='Preinscription en Licence 3' className='outline-none w-[600px] border-b-2 py-1 text-lg'>
             <option>Preinscription en Licence 3</option>
             <option>Preinscription en Master 1</option>
             <option>Preinscription en Master 2</option>

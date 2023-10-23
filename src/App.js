@@ -17,6 +17,7 @@ import FICHEPREINSCRIPTION from './page/FICHEPREINSCRIPTION.js'
 import QSE_L3 from './page/QSE_L3.js'
 import QSE_M1 from './page/QSE_M1.js'
 import QSE_M2 from './page/QSE_M2.js'
+import DASHBOARD from './page/DASHBOARD.js'
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="/VDAF/m2" element={<VDAF_M2/>}/>
         <Route path="/preinscription" element={<PREINSCRIPTION/>}/>
         <Route path="/fiche" element={<FICHEPREINSCRIPTION/>}/>
+        <Route path="/Dashboard" element={<DASHBOARD/>}/>
       </Routes>
     </div>
   );
