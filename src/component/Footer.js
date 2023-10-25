@@ -4,13 +4,15 @@ import {IoLogoWhatsapp} from 'react-icons/io'
 import {FaLinkedinIn} from 'react-icons/fa'
 import {FaMapPin} from 'react-icons/fa'
 import {FcCalendar} from 'react-icons/fc'
+import { Navigate, useNavigate } from 'react-router-dom'
 export default function Footer() {
+  const navigate =useNavigate()
   return (
     <div id='contact' className='bg-[#9A3BE5] w-full h-[230px] absolute top-[1950px] py-4 px-10 flex flex-row justify-between '>
       
       <div>
       <div className='flex m-1'> 
-        <div className='bg-white p-1'> <img src={require('../assets/logo_una.png')} style={{width:60 ,height:60} } alt=''/></div>
+        <div className='bg-white p-1 cursor-pointer'> <img src={require('../assets/logo_una.png')} style={{width:60 ,height:60} } alt='' onClick={()=>navigate('/Dashboard')}/></div>
         <p className='w-[100px] whitespace-normal text-[14px] ml-2 font-sans text-white font-bold tracking-wider'>
          CENTRE DE FORMATION CONTINUE
         </p>

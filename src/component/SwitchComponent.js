@@ -9,7 +9,7 @@ import PRELISTEQSE from './PRELISTEQSE.js'
 import HOMEDASH from './HOMEDASH.js'
 import PREINSCRIPTION from './PREINSCRIPTION.js'
 import DECISIONENCOURS from './DECISIONENCOURS.js'
- const SwitchComponent =({rub,retour ,setRub})=>{
+ const SwitchComponent =({rub,retour ,setRub,setBackdrop})=>{
     switch (rub) {
         case 'DASH':
             
@@ -19,7 +19,7 @@ import DECISIONENCOURS from './DECISIONENCOURS.js'
         case 'PRE':
             
             return(
-               <PREINSCRIPTION  retour={retour}/>
+               <PREINSCRIPTION  retour={retour} setBackdrop={setBackdrop}/>
             )
         case 'DPEC':
             

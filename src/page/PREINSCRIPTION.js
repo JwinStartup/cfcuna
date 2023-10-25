@@ -45,16 +45,41 @@ export default function PREINSCRIPTION() {
         setFileCV(p)
      }
      const onSubmit = (data) => {
-      dispatch(preinscritActions.faire({
-        nom:data.nom,
-        prenoms:data.prenoms,
-        email:data.email,
-        annee:data.annee,
-        diplome:data.diplome,
-        tel:data.tel,
-        filiere:data.filiere
-      }))
+      // console.log(filiere(data.filiere),niveau(data.niveau))
+    dispatch(preinscritActions.faire({
+      nom:data.nom,
+      prenoms:data.prenoms,
+      email:data.email,
+      annee:data.annee,
+      diplome:niveau(data.diplome),
+      tel:data.tel,
+      filiere:filiere(data.filiere)
+    }))
+  }
+  const filiere =(p)=>{
+    switch (p) {
+      case 'Qualité, Securité et Environnement (QSE)':
+       return 'QSE'
+      case 'Statistique et Informatique Décisionnelle (SID)':
+       return 'SID'
+      case 'Valorisation des Dechets Agricoles et Forestiers (VDAF)':
+       return 'VDAF'
+      default:
+        return 'QSE'
     }
+  }
+  const niveau =(p)=>{
+    switch (p) {
+      case 'Preinscription en Licence 3':
+       return 'Licence3'
+      case 'Preinscription en Master 1':
+       return 'Master1'
+      case 'Preinscription en Master 2':
+       return 'Master2'
+      default:
+        return 'Licence3'
+    }
+  }
   return (
     <div>
       <Header/>

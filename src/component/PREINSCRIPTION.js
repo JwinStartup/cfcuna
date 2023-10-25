@@ -3,8 +3,9 @@ import {ImCheckboxChecked,ImCheckboxUnchecked} from 'react-icons/im'
 import {FaChevronCircleLeft, FaChevronDown, FaChevronUp} from 'react-icons/fa' 
 import { useForm } from "react-hook-form";
 import { useDispatch,  } from "react-redux";
-import {preinscription, preinscritActions}from '../reducer/preinscrit'
-export default function PREINSCRIPTION({retour}) {
+import {preinscritActions}from '../reducer/preinscrit'
+import { BeatLoader } from 'react-spinners';
+export default function PREINSCRIPTION({retour,setBackdrop}) {
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
     const [maskCNI,setMaskCNI]=useState(false) 
@@ -19,6 +20,7 @@ export default function PREINSCRIPTION({retour}) {
     const [fileAT,setFileAT]=useState(null)
     const [fileBAC,setFileBAC]=useState(null)
     const [fileCNI,setFileCNI]=useState(null)
+    const [loading,setLoading]=useState(false)
      const onChangeFile=(p)=>{
         console.log(p)
         setFile(p)
@@ -45,15 +47,19 @@ export default function PREINSCRIPTION({retour}) {
      }
      const onSubmit = (data) => {
         // console.log(filiere(data.filiere),niveau(data.niveau))
+        setLoading(true)
       dispatch(preinscritActions.faire({
         nom:data.nom,
         prenoms:data.prenoms,
         email:data.email,
         annee:data.annee,
-        niveau:niveau(data.niveau),
+        diplome:niveau(data.diplome),
         tel:data.tel,
         filiere:filiere(data.filiere)
-      }))
+      })).then(()=>{
+        setBackdrop(true) 
+        setLoading(false)
+      })
     }
     const filiere =(p)=>{
       switch (p) {
@@ -103,7 +109,7 @@ export default function PREINSCRIPTION({retour}) {
             <option>Statistique et Informatique Décisionnelle (SID)</option>
             <option>Valorisation des Dechets Agricoles et Forestiers (VDAF)</option>
         </select>
-        <select {...register("niveau")} defaultValue='Preinscription en Licence 3' className='outline-none w-[600px] border-b-2 py-1 text-lg'>
+        <select {...register("diplome")} defaultValue='Preinscription en Licence 3' className='outline-none w-[600px] border-b-2 py-1 text-lg'>
             <option>Preinscription en Licence 3</option>
             <option>Preinscription en Master 1</option>
             <option>Preinscription en Master 2</option>
@@ -204,7 +210,13 @@ export default function PREINSCRIPTION({retour}) {
                       />}
         </div>
          
-        <button type='submit' className='outline-none mb-5  text-white bg-green-700 hover:bg-green-800  font-medium rounded-lg text-lg  px-5 py-2.5 mr-2 '>
+        <button type='submit' className='outline-none mb-5 flex items-center space-x-2  text-white bg-green-700 hover:bg-green-800  font-medium rounded-lg text-lg  px-5 py-2.5 mr-2 '>
+        {loading===true && <BeatLoader
+        color={"white"}
+        size={4}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />}
          <span>   Se preinscrire</span>
         </button>
         </div>
