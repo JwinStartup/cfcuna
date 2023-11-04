@@ -167,16 +167,16 @@ export default function PRELISTE({retour,rub}) {
             
             <ul className='w-full flex flex-row  space-x-16 mt-2  pl-2'>
               <li className='cursor-pointer' > 
-                <iframe src={rub.payload.fileCv}  className='w-32 h-32' />
-                <a href={rub.payload.fileCv} target="_blank" className='hover:underline text-base  font-medium'>Curriculum Vitea</a>
+                <iframe title=' '  secure src={rub.payload.fileCv}  className='w-32 h-32' />
+                <a href={rub.payload.fileCv} target="_blank" rel='noreferrer' className='hover:underline text-base  font-medium'>Curriculum Vitea</a>
              </li>
               <li className='cursor-pointer' > 
-                <iframe src={rub.payload.fileBac} className='w-32 h-32' />
-                <a href={rub.payload.fileBac} target="_blank" className='hover:underline text-base  font-medium'>Bac ou équivalent</a>
+                <iframe title=' '  secure src={rub.payload.fileBac} className='w-32 h-32' />
+                <a href={rub.payload.fileBac} target="_blank" rel='noreferrer' className='hover:underline text-base  font-medium'>Bac ou équivalent</a>
              </li>
               <li className='cursor-pointer' > 
-                <iframe src={rub.payload.fileDernierBac} className='w-32 h-32' />
-                <a href={rub.payload.fileDernierBac} target="_blank" className='hover:underline text-base  font-medium'>Dernier diplôme</a>
+                <iframe title=' '  secure src={rub.payload.fileDernierBac} className='w-32 h-32' />
+                <a href={rub.payload.fileDernierBac} target="_blank" rel='noreferrer' className='hover:underline text-base  font-medium'>Dernier diplôme</a>
              </li>
           </ul>
           </div>
