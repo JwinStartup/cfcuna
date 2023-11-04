@@ -170,7 +170,7 @@ export default function PREINSCRIPTIONCOMP() {
       formdata
      ).then((response)=>{
       console.log(response.data)
-       set(response.data.secure_ur)
+       set(response.data.secure_url)
        setLoading(false)
        setLo(true)
       })
