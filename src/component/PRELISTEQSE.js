@@ -4,7 +4,7 @@ import { preinscritActions } from '../reducer/preinscrit';
 import { useDispatch, useSelector } from 'react-redux';
 import { ClipLoader, PropagateLoader } from 'react-spinners';
 
-export default function PRELISTEQSE({retour}) {
+export default function PRELISTEQSE({retour,setRub}) {
     const dispatch =useDispatch()
     const liste = useSelector((state)=>{
         return state.preinscritReducer
@@ -56,7 +56,7 @@ export default function PRELISTEQSE({retour}) {
         </tr>
     </thead>
     <tbody className='m-2 '>
-    {liste.liste.map((u,i)=><tr key={i} className=' odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full'>
+    {liste.liste.map((u,i)=><tr key={i} onClick={()=>setRub({nom:"PREDETAIL",payload:u})} className='cursor-pointer hover:bg-green-100 odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full'>
                 <th className='font-medium text-base text-gray-500 '>{u.nom}</th>
                     <th className='font-medium text-base text-gray-500 '>{u.prenoms}</th>
                     <th className='font-medium text-base text-gray-500 '>{u.tel}</th>

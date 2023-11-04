@@ -8,11 +8,11 @@ import NOUVEAU_VDAF from './NOUVEAU_VDAF.js'
 import RECENT_TABLE from './RECENT_TABLE.js'
 export default function HOMEDASH({setRub}) {
   return (
-    <div>
+    <div className='ml-5 flex  justify-center flex-col w-full'>
                     
     {/* Dash gauche - partie bas - zone control - stat */}
 
-    <div className='flex flex-row justify-between w-full pt-1  px-3'>
+    <div className='flex flex-row    overflow-x-scroll w-[900px] ' >
         <STAT_QSE />
         <STAT_SID />
         <STAT_VDAF />
@@ -20,16 +20,16 @@ export default function HOMEDASH({setRub}) {
     {/* Dash gauche - partie bas - zone control - nouveau preinscription */}
       <p className='text-xl text-gray-400 font-bold mx-3'>Nouvelle pre-inscription</p>
     <div className='flex flex-row justify-between w-full mt-0'>
-        <NOUVEAU_QSE/>
-        <NOUVEAU_SID/>
-        <NOUVEAU_VDAF/>
+        <NOUVEAU_QSE setRub={setRub}/>
+        <NOUVEAU_SID setRub={setRub}/>
+        <NOUVEAU_VDAF setRub={setRub}/>
     </div>
      <div className='flex justify-between'> <p className='text-xl text-gray-400 font-bold mx-3 my-2'>Recente pre-inscription</p>
-     <button className='text-base text-red-400 font-bold mx-3 my-2'onClick={()=>setRub('DPEC')} >Voir plus</button>
+     <button className='text-base text-red-400 font-bold mx-3 my-2'onClick={()=>setRub({nom:'DPEC',payload:null})} >Voir plus</button>
 </div>
     {/* Dash gauche - partie bas - zone control - Recent */}
-       <div className='bg-white m-2 '>
-         <RECENT_TABLE />
+       <div className='bg-white  w-full'>
+         <RECENT_TABLE setRub={setRub}/>
        </div>
     
      

@@ -8,11 +8,11 @@ import SwitchComponent from '../component/SwitchComponent.js'
 import Backdrop from '../component/Backdrop.js'
 
 export default function DASHBOARD() {
-    const [rub , setRub]=useState('DASH')
+    const [rub , setRub]=useState({nom:'DASH',payload:null})
     const [backdrop , setBackdrop]=useState(false)
     const valideBackdrop=()=>{
       setBackdrop(false)
-      setRub('DASH')
+      setRub({nom:'DASH',payload:null})
     }
   return (
     <div className='flex w-full'>
@@ -41,23 +41,23 @@ export default function DASHBOARD() {
              </div>
 
         {/* Dash gauche - partie bas */}
-        <div className='h-[90%]  flex flex-row p-1 '> 
-
-        {/* Dash gauche - partie bas - menu */}
+        <div className='h-[90%]  flex flex-row p-1  '> 
         <div className='w-[20%] h-full  '> 
-        <DASHBOARD_MENU setRub={(p)=>setRub(p)}/>
+        <DASHBOARD_MENU setRub={(p)=>setRub({nom:p,payload:null})}/>
         </div>
 
+        {/* Dash gauche - partie bas - menu */}
+
         {/* Dash gauche - partie bas - zone control */}
-        <SwitchComponent rub= {rub} setRub={(p)=>setRub(p)} retour={()=>setRub('DASH')} setBackdrop={(p)=>setBackdrop(p)} />
+        <SwitchComponent rub= {rub} setRub={(p)=>setRub(p)} retour={()=>setRub({nom:'DASH',payload:null})} setBackdrop={(p)=>setBackdrop(p)} />
         </div>
       </div >
 
         {/* Dash droit */}
       <div className='w-[20%]'>
         <DASHBOARD_PEOPLE />
-        <DASHBOARD_SQV creer ={()=>setRub('USERCREER')} pre ={()=>setRub('PRE')} />
-        <DASHBOARD_DECISION_SQV/>
+        <DASHBOARD_SQV creer ={()=>setRub({nom:'USERCREER',payload:null})} pre ={()=>setRub({nom:'PRE',payload:null})} />
+        <DASHBOARD_DECISION_SQV setRub={setRub} />
       </div>
     </div>
   )

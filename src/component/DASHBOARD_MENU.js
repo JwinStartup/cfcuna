@@ -6,7 +6,7 @@ export default function DASHBOARD_MENU({setRub}) {
   return (
   
       
-    <div className='w-full'>
+    <div className='w-[250px]'>
       <ul className='p-5 text-base shadow-md border-2 border-gray-100 rounded-2xl font-medium tracking-wider font-sans text-start bg-gray-100  space-y-3 '>
         <li onClick={()=>setRub('USERLISTE')} className='cursor-pointer flex flex-row space-x-2 text-gray-500 items-center'> <FaUserAltSlash size={25} />
              Utilisateurs

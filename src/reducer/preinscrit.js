@@ -16,9 +16,16 @@ export const preinscritReducer = slice.reducer;
 function createInitialState() {
   return {
     // initialize state from local storage to enable user to stay logged in
+    preLoad:null,
     preinscritPost: [],
     countQse:null,
+    countVdaf:null,
+    countSid:null,
     liste: [],
+    liste_sid: [],
+    liste_qse: [],
+    liste_vdaf: [],
+    listeDec: [],
     error: null,
     isLoader: false,
   };
@@ -40,19 +47,34 @@ function createExtraActions() {
     // userListe: userListe(),
     faire: faire(),
     lister: lister(),
+    modifie: modifie(),
     countQse: countQse(),
+    countSid: countSid(),
+    countVdaf: countVdaf(),
     listerTroisPremier: listerTroisPremier(),
     preinscritListe: preinscritListe(),
     preinscritListeQse: preinscritListeQse(),
     preinscritListeVdaf: preinscritListeVdaf(),
     preinscritListeSid: preinscritListeSid(),
+    decision_traite: decision_traite(),
     sid_premier: sid_premier(),
+    qse_premier: qse_premier(),
+    vdaf_premier: vdaf_premier(),
   };
 
   function faire() {
     return createAsyncThunk(`${name}/faire`, async (body) => {
       const res = await fetchWrapper.post(
         `https://cfc-una-server.onrender.com/api/preinscription/faire`,
+        body
+      );
+      return res;
+    });
+  }
+  function modifie() {
+    return createAsyncThunk(`${name}/modifie`, async (body) => {
+      const res = await fetchWrapper.post(
+        `https://cfc-una-server.onrender.com/api/preinscription/modifie`,
         body
       );
       return res;
@@ -74,10 +96,42 @@ function createExtraActions() {
       return res;
     });
   }
+  function qse_premier() {
+    return createAsyncThunk(`${name}/qse_premier`, async (body) => {
+      const res = await fetchWrapper.get(
+        `https://cfc-una-server.onrender.com/api/preinscription/qse_premier`
+      );
+      return res;
+    });
+  }
+  function vdaf_premier() {
+    return createAsyncThunk(`${name}/vdaf_premier`, async (body) => {
+      const res = await fetchWrapper.get(
+        `https://cfc-una-server.onrender.com/api/preinscription/vdaf_premier`
+      );
+      return res;
+    });
+  }
   function countQse() {
     return createAsyncThunk(`${name}/countQse`, async (body) => {
       const res = await fetchWrapper.get(
         `https://cfc-una-server.onrender.com/api/preinscription/countQse`
+      );
+      return res;
+    });
+  }
+  function countSid() {
+    return createAsyncThunk(`${name}/countSid`, async (body) => {
+      const res = await fetchWrapper.get(
+        `https://cfc-una-server.onrender.com/api/preinscription/countSid`
+      );
+      return res;
+    });
+  }
+  function countVdaf() {
+    return createAsyncThunk(`${name}/countVdaf`, async (body) => {
+      const res = await fetchWrapper.get(
+        `https://cfc-una-server.onrender.com/api/preinscription/countVdaf`
       );
       return res;
     });
@@ -122,20 +176,52 @@ function createExtraActions() {
       return res;
     });
   }
+  function decision_traite() {
+    return createAsyncThunk(`${name}/decision_traite`, async (body) => {
+      const res = await fetchWrapper.get(
+        `https://cfc-una-server.onrender.com/api/preinscription/decision_traite`
+      );
+      return res;
+    });
+  }
   
 }
 
 function createExtraReducers() {
   return (builder) => {
     faire();
+    modifie();
     lister();
     preinscritListeQse();
     sid_premier();
+    qse_premier();
+    vdaf_premier();
     preinscritListeVdaf();
     preinscritListeSid();
     countQse();
+    countVdaf();
+    countSid();
     listerTroisPremier();
+    decision_traite();
     preinscritListe();
+    function modifie() {
+      var { pending, fulfilled, rejected } = extraActions.modifie;
+      builder
+        .addCase(pending, (state) => {
+          state.error = null;
+          state.isLoader = true;
+        })
+        .addCase(fulfilled, (state, action) => {
+          const preLoad = action.payload;
+          state.preLoad = preLoad
+          state.isLoader = false;
+        })
+          
+        .addCase(rejected, (state, action) => {
+          state.isLoader = false;
+          state.error = action.error;
+        });
+    }
     function faire() {
       var { pending, fulfilled, rejected } = extraActions.faire;
       builder
@@ -164,7 +250,6 @@ function createExtraReducers() {
         .addCase(fulfilled, (state, action) => {
           const liste = action.payload;
           state.liste = liste;
-          console.log(liste)
           state.isLoader = false;
         })
         .addCase(rejected, (state, action) => {
@@ -182,7 +267,23 @@ function createExtraReducers() {
         .addCase(fulfilled, (state, action) => {
           const liste = action.payload;
           state.liste = liste;
-          console.log(liste)
+          state.isLoader = false;
+        })
+        .addCase(rejected, (state, action) => {
+          state.isLoader = false;
+          state.error = action.error;
+        });
+    }
+    function decision_traite() {
+      var { pending, fulfilled, rejected } = extraActions.decision_traite;
+      builder
+        .addCase(pending, (state) => {
+          state.error = null;
+          state.isLoader = true;
+        })
+        .addCase(fulfilled, (state, action) => {
+          const listeDec = action.payload;
+          state.listeDec = listeDec;
           state.isLoader = false;
         })
         .addCase(rejected, (state, action) => {
@@ -198,9 +299,42 @@ function createExtraReducers() {
           state.isLoader = true;
         })
         .addCase(fulfilled, (state, action) => {
-          const liste = action.payload;
-          state.liste = liste;
-          console.log(liste)
+          const liste_sid = action.payload;
+          state.liste_sid = liste_sid;
+          state.isLoader = false;
+        })
+        .addCase(rejected, (state, action) => {
+          state.isLoader = false;
+          state.error = action.error;
+        });
+    }
+    function qse_premier() {
+      var { pending, fulfilled, rejected } = extraActions.qse_premier;
+      builder
+        .addCase(pending, (state) => {
+          state.error = null;
+          state.isLoader = true;
+        })
+        .addCase(fulfilled, (state, action) => {
+          const liste_qse = action.payload;
+          state.liste_qse = liste_qse;
+          state.isLoader = false;
+        })
+        .addCase(rejected, (state, action) => {
+          state.isLoader = false;
+          state.error = action.error;
+        });
+    }
+    function vdaf_premier() {
+      var { pending, fulfilled, rejected } = extraActions.vdaf_premier;
+      builder
+        .addCase(pending, (state) => {
+          state.error = null;
+          state.isLoader = true;
+        })
+        .addCase(fulfilled, (state, action) => {
+          const liste_vdaf = action.payload;
+          state.liste_vdaf = liste_vdaf;
           state.isLoader = false;
         })
         .addCase(rejected, (state, action) => {
@@ -218,7 +352,6 @@ function createExtraReducers() {
         .addCase(fulfilled, (state, action) => {
           const liste = action.payload;
           state.liste = liste;
-          console.log(liste)
           state.isLoader = false;
         })
         .addCase(rejected, (state, action) => {
@@ -236,7 +369,6 @@ function createExtraReducers() {
         .addCase(fulfilled, (state, action) => {
           const liste = action.payload;
           state.liste = liste;
-          console.log(liste)
           state.isLoader = false;
         })
         .addCase(rejected, (state, action) => {
@@ -254,7 +386,6 @@ function createExtraReducers() {
         .addCase(fulfilled, (state, action) => {
           const liste = action.payload;
           state.liste = liste;
-          console.log(liste)
           state.isLoader = false;
         })
         .addCase(rejected, (state, action) => {
@@ -279,6 +410,41 @@ function createExtraReducers() {
           state.error = action.error;
         });
     }
+    function countSid() {
+      var { pending, fulfilled, rejected } = extraActions.countSid;
+      builder
+        .addCase(pending, (state) => {
+          state.error = null;
+          state.isLoader = true;
+        })
+        .addCase(fulfilled, (state, action) => {
+          const countSid = action.payload;
+          state.countSid = countSid;
+          state.isLoader = false;
+        })
+        .addCase(rejected, (state, action) => {
+          state.isLoader = false;
+          state.error = action.error;
+        });
+    }
+    function countVdaf() {
+      var { pending, fulfilled, rejected } = extraActions.countVdaf;
+      builder
+        .addCase(pending, (state) => {
+          state.error = null;
+          state.isLoader = true;
+        })
+        .addCase(fulfilled, (state, action) => {
+          console.log(action.payload)
+          const countVdaf = action.payload;
+          state.countVdaf = countVdaf;
+          state.isLoader = false;
+        })
+        .addCase(rejected, (state, action) => {
+          state.isLoader = false;
+          state.error = action.error;
+        });
+    }
     function listerTroisPremier() {
       var { pending, fulfilled, rejected } = extraActions.listerTroisPremier;
       builder
@@ -288,7 +454,6 @@ function createExtraReducers() {
         })
         .addCase(fulfilled, (state, action) => {
           const preinscritPost = action.payload;
-          console.log(preinscritPost)
           state.preinscritPost = preinscritPost;
           state.isLoader = false;
         })
