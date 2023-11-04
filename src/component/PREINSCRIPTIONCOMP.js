@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
-import Header from './header'
-import {Cloudinary} from "@cloudinary/url-gen";
 import {ImCheckboxChecked,ImCheckboxUnchecked} from 'react-icons/im' 
-import {FaCamera, FaChevronDown, FaChevronUp, FaUserPlus} from 'react-icons/fa' 
+import {FaCamera, FaChevronDown, FaChevronUp,} from 'react-icons/fa' 
 import { useForm } from "react-hook-form";
 import { useDispatch,  } from "react-redux";
 import {preinscritActions}from '../reducer/preinscrit'
@@ -41,12 +39,9 @@ export default function PREINSCRIPTIONCOMP() {
     const [retour,setRetour]=useState(false) 
     const [maskBAC,setMaskBAC]=useState(false) 
     const [maskDerBAC,setMaskDerBAC]=useState(false) 
-    const [mask,setMask]=useState(false) 
     const [maskCV,setMaskCV]=useState(false) 
-    const [file,setFile]=useState(null)
     const [fileCV,setFileCV]=useState(null)
     const [fileDerBAC,setFileDerBAC]=useState(null)
-    const [fileAT,setFileAT]=useState(null)
     const [fileBAC,setFileBAC]=useState(null)
     const [image,setImage]=useState(null)
      const onChangeFileDerBAC=(p)=>{
