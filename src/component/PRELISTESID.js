@@ -25,10 +25,29 @@ export default function PRELISTESID({retour,setRub}) {
                     break;
             }
            }
+           const decisionColor =(p)=>{
+            switch (p) {
+              case "Accepte":
+                
+                return "text-green-400"
+              case "Retrograde":
+                
+                return "text-orange-400"
+              case "Refuse":
+                
+                return "text-red-800"
+              case "Encours":
+                
+                return "text-red-400"
+            
+              default:
+                break;
+            }
+           }
   return (
     <div className='space-y-2 w-full mx-8 flex  flex-col items-center'>
     <div className='flex w-full items-center justify-center cursor-pointer mb-3'> <FaChevronCircleLeft size={30} color='gray' onClick={retour}  />
-      <p className='text-xl text-gray-400 font-bold mx-3 text-center' >Liste des preinscriptions </p></div>
+      <p className='text-xl text-gray-400 font-bold mx-3 text-center' >Liste des preinscriptions en SID </p></div>
       <div className=' border rounded-full w-[400px] p-2 flex '>
         <FaSearch size={20} color='black' />
         <input type='search' placeholder='Recherche par nom ...' className='placeholder:font-medium w-full ml-3 outline-none '/>
@@ -66,7 +85,7 @@ export default function PRELISTESID({retour,setRub}) {
                     <div className={`${colour(u.filiere)} rounded-full w-2 h-2 mr-1 flex self-center`}/>
                     {u.filiere}
                     </th>
-                    <th className='font-medium text-base text-red-500 '>{u.decisionType}</th>
+                    <th className={`font-medium text-base ${decisionColor(u.decisionType)}`} >{u.decisionType}</th>
                 </tr>)}
         
         

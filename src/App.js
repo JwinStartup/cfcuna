@@ -13,12 +13,14 @@ import SID_M1 from './page/SID_M1.js'
 import SID_M2 from './page/SID_M2.js'
 import VDAF from './page/VDAF.js'
 import VDAF_M2 from './page/VDAF_M2.js'
+import PREINSCRIPTIONHOME from './page/PREINSCRIPTIONHOME.js'
 import PREINSCRIPTION from './page/PREINSCRIPTION.js'
 import FICHEPREINSCRIPTION from './page/FICHEPREINSCRIPTION.js'
 import QSE_L3 from './page/QSE_L3.js'
 import QSE_M1 from './page/QSE_M1.js'
 import QSE_M2 from './page/QSE_M2.js'
 import DASHBOARD from './page/DASHBOARD.js'
+import DASHBOARDLOGIN from './page/DASHBOARDLOGIN.js'
 
 function App() {
   return (
@@ -36,9 +38,11 @@ function App() {
         <Route path="/SID/m2" element={<SID_M2/>}/>
         <Route path="/VDAF" element={<VDAF/>}/>
         <Route path="/VDAF/m2" element={<VDAF_M2/>}/>
-        <Route path="/preinscription" element={<PREINSCRIPTION/>}/>
-        <Route path="/fiche" element={<FICHEPREINSCRIPTION/>}/>
+        <Route path="/preinscription" element={<PREINSCRIPTIONHOME/>}/>
+        <Route path="/preinscription/faire" element={<PREINSCRIPTION/>}/>
+        <Route path="/preinscription/fiche/:numero" element={<FICHEPREINSCRIPTION/>}/>
         <Route path="/Dashboard" element={<DASHBOARD/>}/>
+        <Route path="/login" element={<DASHBOARDLOGIN/>}/>
       </Routes>
     </div>
   );

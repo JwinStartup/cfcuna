@@ -6,11 +6,12 @@ import PRELISTE from './PRELISTE.js'
 import PRELISTESID from './PRELISTESID.js'
 import PRELISTEVDAF from './PRELISTEVDAF.js'
 import PRELISTEQSE from './PRELISTEQSE.js'
+import PRELISTENSA from './PRELISTENSA.js'
 import PREDETAIL from './PREDETAIL.js'
 import HOMEDASH from './HOMEDASH.js'
 import PREINSCRIPTION from './PREINSCRIPTIONCOMP.js'
 import DECISIONENCOURS from './DECISIONENCOURS.js'
- const SwitchComponent =({rub,retour ,setRub,setBackdrop})=>{
+ const SwitchComponent =({rub,retour ,setRub,setBackdrop,setBackdropUser})=>{
     switch (rub.nom) {
         case 'DASH':
             
@@ -30,12 +31,12 @@ import DECISIONENCOURS from './DECISIONENCOURS.js'
     
       case 'USERCREER':
         return(
-            <CREATIONUSER retour={retour} />
+            <CREATIONUSER retour={retour} setRub={setRub}/>
         )
 
       case 'USERLISTE':
         return(
-            <USERLISTE retour={retour} />
+            <USERLISTE retour={retour} setBackdropUser={setBackdropUser} />
         )
       case 'PRELISTE':
         return(
@@ -56,6 +57,10 @@ import DECISIONENCOURS from './DECISIONENCOURS.js'
       case 'PREDETAIL':
         return(
             <PREDETAIL retour={retour} rub={rub}/>
+        )
+      case 'PRELISTENSA':
+        return(
+            <PRELISTENSA retour={retour} rub={rub}/>
         )
 
         default:

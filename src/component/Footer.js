@@ -12,13 +12,13 @@ export default function Footer() {
       
       <div>
       <div className='flex m-1'> 
-        <div className='bg-white p-1 cursor-pointer'> <img src={require('../assets/logo_una.png')} style={{width:60 ,height:60} } alt='' onClick={()=>navigate('/Dashboard')}/></div>
+        <div className='bg-white p-1 cursor-pointer'> <img src={require('../assets/logo_una.png')} style={{width:60 ,height:60} } alt='' onClick={()=>navigate('/login')}/></div>
         <p className='w-[100px] whitespace-normal text-[14px] ml-2 font-sans text-white font-bold tracking-wider'>
          CENTRE DE FORMATION CONTINUE
         </p>
         
     </div>
-    <p className='w-[300px] text-white font-light tracking-wide pt-3 '>existe dépuis 2023 au sein de l'université NANGUI ABROUGOUA</p>
+    <p className='w-[300px] text-white font-light tracking-wide pt-3 '>existe dépuis  octobre 2012 au sein de l'université NANGUI ABROUGOUA</p>
     <div  className='flex flex-row space-x-10 mt-5'>
         <div className='cursor-pointer bg-blue-500 w-10 h-10 rounded-full flex items-center justify-center'>
         <CgFacebook size={30} color='white'/>
@@ -39,8 +39,8 @@ export default function Footer() {
         <p className='cursor-pointer text-[14px] m-2 font-sans text-white font-normal tracking-wider '>VDAF</p>
       </div>
       <div className='space-y-5'>
-        <div className='flex flex-end cursor-pointer'> <FaMapPin size={25} color='green'/>
-        <p className='text-white'> Université NANGUI ABROUGOUA</p>
+        <div className='flex flex-end cursor-pointer'> <FaMapPin size={25} color='black'/>
+        <a href='https://maps.app.goo.gl/RzktCLraufqjaB1y7' className='text-white underline'> Abidjan - Abobo - Adjamé</a >
         </div>
         <div className='flex flex-end cursor-pointer'> <FcCalendar size={25} />
         <p className='text-white'> Du Lundi au Vendredi de 08h à 16h </p>

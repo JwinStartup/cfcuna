@@ -3,7 +3,10 @@ import { FaSearch } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux';
 import { preinscritActions } from '../reducer/preinscrit';
 import { PropagateLoader } from 'react-spinners';
-import DataDecision from './DataDecision';
+import DataDecisionSID from './DataDecisionSID.js';
+import DataDecisionQSE from './DataDecisionQSE.js';
+import DataDecisionVDAF from './DataDecisionVDAF.js';
+import DataDecisionNSA from './DataDecisionNSA.js';
 
 export default function DASHBOARD_DECISION_SQV({setRub}) {
   const dispatch =useDispatch()
@@ -11,11 +14,7 @@ export default function DASHBOARD_DECISION_SQV({setRub}) {
          return state.preinscritReducer
         });
         const [lister,setLister]=useState([])
-    useLayoutEffect(() => { 
-      dispatch(preinscritActions.decision_traite()).then((u)=>setLister(u.payload.filter((u)=>u.filiere==='QSE')))
-    },[])
-
-   console.log(liste)
+  
    const [border,setBorder]=useState('QSE')
 
    
@@ -25,7 +24,31 @@ export default function DASHBOARD_DECISION_SQV({setRub}) {
       const l=liste.listeDec.filter((u)=>u.filiere===p)
        setLister(l)
      }
-
+   const switchDec =(p)=>{
+    switch (p) {
+      case 'QSE':
+        return(
+          <DataDecisionQSE setRub={setRub} />
+        )
+      case 'NSA':
+        return(
+          <DataDecisionNSA setRub={setRub} />
+        )
+      case 'VDAF':
+        return(
+          <DataDecisionVDAF setRub={setRub} />
+        )
+      case 'SID':
+        return(
+          <DataDecisionSID setRub={setRub} />
+        )
+    
+      default:
+        return(
+          <DataDecisionQSE setRub={setRub} />
+        )
+    }
+   }
   return (
     <div className="">
       <p className='text-xl text-gray-400 font-bold mx-3 my-2 '>Decision de preinscription</p>
@@ -49,17 +72,14 @@ export default function DASHBOARD_DECISION_SQV({setRub}) {
                 </li>
 
                 </ul>
-                <div className='w-full'>
-                <div className=' border rounded-full justify-center items-center flex my-3'>
-                   <FaSearch size={20} color='black' />
-                    <input type='search' placeholder='Numero ...' className='py-2 bg-transparent ml-3 outline-none placeholder:font-medium   '/>
-                  </div>
+                
+                
 
                  <div className='w-full'>
-                  {lister.length===0?<p className='text-center'>Pas de preinscription</p>:<div>
-                   <DataDecision listeDec={lister} setRub={setRub}/>
-                   </div>
-                   }</div>
+               
+                    {switchDec(border)}
+            
+               
                    
                   
                 </div>

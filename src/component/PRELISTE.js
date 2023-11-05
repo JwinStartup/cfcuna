@@ -20,9 +20,30 @@ export default function PRELISTE({retour,setRub}) {
                     return 'bg-violet-600'
                 case 'VDAF':
                     return 'bg-yellow-600'
+                 case 'NSA':
+                      return 'bg-blue-300'
             
                 default:
                     break;
+            }
+           }
+           const decisionColor =(p)=>{
+            switch (p) {
+              case "Accepte":
+                
+                return "text-green-400"
+              case "Retrograde":
+                
+                return "text-orange-400"
+              case "Refuse":
+                
+                return "text-red-800"
+              case "Encours":
+                
+                return "text-red-400"
+            
+              default:
+                break;
             }
            }
   return (
@@ -35,9 +56,9 @@ export default function PRELISTE({retour,setRub}) {
       </div>
       <div className=' w-full mx-2 bg-gray-100 px-2 py-3 mt-6 rounded-xl overflow-y-scroll '>
 
-      {liste.isLoader===true? <div className='w-full flex justify-center items-center p-2'> <PropagateLoader
+      {liste.isLoader===true? <div className=' flex justify-center items-center p-8 mb-3'> <PropagateLoader
         color={"green"}
-        size={20}
+        size={15}
         aria-label="Loading Spinner"
         data-testid="loader"
       /></div>: <div className='w-full'>
@@ -66,7 +87,7 @@ export default function PRELISTE({retour,setRub}) {
                     <div className={`${colour(u.filiere)} rounded-full w-2 h-2 mr-1 flex self-center`}/>
                     {u.filiere}
                     </th>
-                    <th className='font-medium text-base text-red-500 '>{u.decisionType}</th>
+                    <th className={`font-medium text-base ${decisionColor(u.decisionType)}`} >{u.decisionType}</th>
                 </tr>)}
         
         

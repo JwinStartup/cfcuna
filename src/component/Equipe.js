@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Equipe() {
   return (
-    <div className='absolute top-[1300px] flex items-center justify-center flex-col w-full space-y-4'>
+    <div className='absolute top-[1250px] flex items-center justify-center flex-col w-full space-y-4'>
       <p className='font-sans font-semibold text-[40px] text-black'>Notre <span className='text-[#9A3BE5]'>équipe</span>, c’est ?</p>
       <p className='w-[800px] text-center font-sans text-gray-400 tracking-wide font-light indent-10'>
       Une team de passionnée de Digital ayant travaillé pour les plus grandes entreprises au Canada et en France, en Agence ou chez l’annonceur. Une nouvelle génération d’experts qui cassent les codes des agences traditionnelles en proposant les meilleures activations digitales de l’écosystème des médias payants.

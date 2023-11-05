@@ -4,13 +4,13 @@ import { preinscritActions } from '../reducer/preinscrit';
 import { useDispatch, useSelector } from 'react-redux';
 import { PropagateLoader } from 'react-spinners';
 
-export default function PRELISTEVDAF({retour,setRub}) {
+export default function PRELISTENSA({retour,setRub}) {
     const dispatch =useDispatch()
-    const liste = useSelector((state)=>{
+    const liste_nsa = useSelector((state)=>{
         return state.preinscritReducer
    });
     useEffect(() => { 
-        dispatch(preinscritActions.preinscritListeVdaf())
+        dispatch(preinscritActions.preinscritListeNsa())
         },[])
         const colour =(p)=>{
             switch (p) {
@@ -20,6 +20,8 @@ export default function PRELISTEVDAF({retour,setRub}) {
                     return 'bg-violet-600'
                 case 'VDAF':
                     return 'bg-yellow-600'
+                case 'NSA':
+                    return 'bg-blue-300'
             
                 default:
                     break;
@@ -47,20 +49,20 @@ export default function PRELISTEVDAF({retour,setRub}) {
   return (
     <div className='space-y-2 w-full mx-8 flex  flex-col items-center'>
     <div className='flex w-full items-center justify-center cursor-pointer mb-3'> <FaChevronCircleLeft size={30} color='gray' onClick={retour}  />
-      <p className='text-xl text-gray-400 font-bold mx-3 text-center' >Liste des preinscriptions en VDAF </p></div>
+      <p className='text-xl text-gray-400 font-bold mx-3 text-center' >Liste des preinscriptions en NSA </p></div>
       <div className=' border rounded-full w-[400px] p-2 flex '>
         <FaSearch size={20} color='black' />
         <input type='search' placeholder='Recherche par nom ...' className='placeholder:font-medium w-full ml-3 outline-none '/>
       </div>
       <div className=' w-full mx-2 bg-gray-100 px-2 py-3 mt-6 rounded-xl overflow-y-scroll  '>
 
-      {liste.isLoader===true? <div className='w-full flex justify-center items-center p-2'> <PropagateLoader
+      {liste_nsa.isLoader===true? <div className='w-full flex justify-center items-center p-2'> <PropagateLoader
         color={"green"}
         size={20}
         aria-label="Loading Spinner"
         data-testid="loader"
       /></div>: <div className='w-full'>
-        {liste.liste.length===0?<p className='text-center'>Pas de preinscription</p>:
+        {liste_nsa.liste_nsa.length===0?<p className='text-center'>Pas de preinscription</p>:
 
 <table className='w-full '>
     <thead>
@@ -75,7 +77,7 @@ export default function PRELISTEVDAF({retour,setRub}) {
         </tr>
     </thead>
     <tbody className='m-2 '>
-    {liste.liste.map((u,i)=><tr key={i} onClick={()=>setRub({nom:"PREDETAIL",payload:u})}  className='cursor-pointer hover:bg-green-100 odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full'>
+    {liste_nsa.liste_nsa.map((u,i)=><tr key={i} onClick={()=>setRub({nom:"PREDETAIL",payload:u})}  className='cursor-pointer hover:bg-green-100 odd:bg-gray-100  bg-white rounded-3xl h-14 m-2  items-center w-full'>
                 <th className='font-medium text-base text-gray-500 '>{u.nom}</th>
                     <th className='font-medium text-base text-gray-500 '>{u.prenoms}</th>
                     <th className='font-medium text-base text-gray-500 '>{u.tel}</th>

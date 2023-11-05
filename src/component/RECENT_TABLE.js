@@ -21,6 +21,8 @@ export default function RECENT_TABLE({setRub}) {
             return 'bg-violet-600'
         case 'VDAF':
             return 'bg-yellow-600'
+            case 'NSA':
+                return 'bg-blue-300'    
     
         default:
             break;

@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { FaChevronCircleLeft, FaSearch, FaUserCircle } from 'react-icons/fa'
+import React, {  useState } from 'react'
+import { FaChevronCircleLeft,  FaUserCircle } from 'react-icons/fa'
 import { preinscritActions } from '../reducer/preinscrit';
-import { useDispatch, useSelector } from 'react-redux';
-import { PropagateLoader } from 'react-spinners';
-import { Viewer } from '@react-pdf-viewer/core';
-import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
+import { useDispatch} from 'react-redux';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
-import ViewerPdf from './ViewerPdf';
 import Backdrop from './Backdrop';
 import { useForm } from 'react-hook-form';
 
@@ -24,6 +20,8 @@ export default function PRELISTE({retour,rub}) {
                     return 'bg-violet-600'
                 case 'VDAF':
                     return 'bg-yellow-600'
+                case 'NSA':
+                    return 'bg-blue-300'
             
                 default:
                     break;
@@ -37,7 +35,8 @@ export default function PRELISTE({retour,rub}) {
                     return 'text-violet-600'
                 case 'VDAF':
                     return 'text-yellow-600'
-            
+                case 'NSA':
+                    return 'text-blue-300'
                 default:
                     break;
             }
@@ -141,7 +140,7 @@ export default function PRELISTE({retour,rub}) {
       <div className=' w-full mx-2 bg-gray-100 px-2 py-3 mt-6 rounded-xl overflow-y-scroll '>
           <div className='flex flex-row'>
             <div className='flex flex-row border-r-2  my-1 px-6  border-r-slate-200 '>
-             <FaUserCircle size={50} color='gray'/>
+            {rub.payload.image===""? <FaUserCircle size={50} color='gray'/>:<img src={rub.payload.image} className='w-11 h-11 rounded-full' alt=''/>}
             <div className='flex flex-col pl-1'> 
                 <p>{rub.payload.nom} {rub.payload.prenoms}</p>
                 <p className='text-sm text-green-500'>{rub.payload.numero}</p>

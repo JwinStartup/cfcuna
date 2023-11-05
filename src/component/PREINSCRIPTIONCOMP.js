@@ -28,7 +28,7 @@ const schema = yup
 
 export default function PREINSCRIPTIONCOMP() {
   const dispatch = useDispatch();
-  const { register, handleSubmit, formState: { errors },} = useForm(
+  const { register,watch,getValues, handleSubmit, formState: { errors },} = useForm(
    { resolver: yupResolver(schema),}
   );
   const navigate = useNavigate()
@@ -43,7 +43,8 @@ export default function PREINSCRIPTIONCOMP() {
     const [fileCV,setFileCV]=useState(null)
     const [fileDerBAC,setFileDerBAC]=useState(null)
     const [fileBAC,setFileBAC]=useState(null)
-    const [image,setImage]=useState(null)
+    const [image,setImage]=useState("")
+    const [lord,setLordImage]=useState("")
      const onChangeFileDerBAC=(p)=>{
       console.log(p)
       if(p.size > 2097152){
@@ -63,16 +64,12 @@ export default function PREINSCRIPTIONCOMP() {
         setFileCV(p)
      }
      const onChangeImage=(p)=>{
-        setImage(p)
+      uploadCloud(p,setImage,setLordImage)
      }
      
      const lodi = loadingDerBac===true &&loadingBAC ===true &&loadingCv===true
      const onSubmit = (data) => {
        setLoading(true)
-     
-      // console.log(filiere(data.filiere),niveau(data.niveau))
-
-     // if(lodi===true){
         dispatch(preinscritActions.faire({
           nom:data.nom,
           prenoms:data.prenoms,
@@ -88,8 +85,7 @@ export default function PREINSCRIPTIONCOMP() {
           filiere:filiere(data.filiere)
         })).then(()=>{
           setLoading(false)
-        }).then(()=>setRetour(true))
-    //  }
+        }).then(()=>setRetour(true)) 
   }
   const filiere =(p)=>{
     switch (p) {
@@ -121,42 +117,47 @@ export default function PREINSCRIPTIONCOMP() {
   }
   const option=(p)=>{
     switch (p) {
-      case "QSE":
+      case "Qualité, Securité et Environnement (QSE)":
         return(
-          <div>
+          <>
             <option>Preinscription en Licence 2</option>
             <option>Preinscription en Licence 3</option>
             <option>Preinscription en Master 1</option>
             <option>Preinscription en Master 2</option>
-          </div>
+          </>
         )
-      case "SID":
+      case "Statistique et Informatique Décisionnelle (SID)":
         return(
-          <div>
+          <>
             <option>Preinscription en Licence 2</option>
             <option>Preinscription en Licence 3</option>
             <option>Preinscription en Master 1</option>
             <option>Preinscription en Master 2</option>
-          </div>
+          </>
         )
-      case "VDAF":
+      case "Valorisation des Dechets Agricoles et Forestiers (VDAF)":
         return(
-          <div>
+          <>
             <option>Preinscription en Master 1</option>
             <option>Preinscription en Master 2</option>
-          </div>
+          </>
         )
-      case "NSA":
+      case "Nutrition et Securités alimentaires (NSA)":
         return(
-          <div>
+          <>
             <option>Preinscription en Master 2</option>
-          </div>
+          </>
         )
-        
-       
     
       default:
-        break;
+        return(
+          <>
+            <option>Preinscription en Licence 2</option>
+            <option>Preinscription en Licence 3</option>
+            <option>Preinscription en Master 1</option>
+            <option>Preinscription en Master 2</option>
+          </>
+        )
     }
   }
   const uploadCloud =(p,set,setLo)=>{
@@ -180,6 +181,7 @@ export default function PREINSCRIPTIONCOMP() {
     }
     
   }
+  console.log(watch("filiere"))
   return (
     <div className='w-full items-center justify-center'>
      {retour===true&& <div className='h-full absolute w-full'>
@@ -216,15 +218,21 @@ export default function PREINSCRIPTIONCOMP() {
         <input {...register("email")} type='email' placeholder='Email' className='outline-none w-[400px] border-b-2 py-1 text-lg'/>
         {errors.email?.message&&<p className='text-red-400 text-sm '>{errors.email?.message}</p>}
        </div> 
-              <div className="flex items-center justify-center w-[200px] h-[200px] ">
+     
+            {image===""?<div className="flex items-center justify-center w-[200px] h-[200px] ">
             <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 ">
                 <div className="flex flex-col items-center justify-center pt-5 pb-6 space-y-2">
                     <FaCamera size={32} color='gray'/>
                     <p className="mb-2 text-sm text-gray-500 "><span className="font-semibold">Ajouter une image</span></p>
                 </div>
-                <input id="dropzone-file" {...register("image")} type="file" className="hidden" />
+                <input  onInput={(e)=>onChangeImage(e.target.files[0])}  id="dropzone-file" {...register("image")} type="file" className="hidden" accept="image/png, image/jpeg, image/*" />
             </label>
-        </div> 
+        </div>:<div> 
+        <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-full border-2 border-gray-300 shadow-lg rounded-lg cursor-pointer bg-gray-50 ">
+          <img alt='' src={image} className='w-[200px] h-[200px] rounded-lg' />
+          <input  onInput={(e)=>onChangeImage(e.target.files[0])}  id="dropzone-file" {...register("image")} type="file" className="hidden" />
+          </label>
+          </div>}
        </div>
         <input {...register("Whatshapp")} type='Whatshapp' placeholder='Whatshapp' className='outline-none w-[600px] border-b-2 py-1 text-lg'/>
         {errors.email?.message&&<p className='text-red-400 text-sm '>{errors.email?.message}</p>}
@@ -235,10 +243,7 @@ export default function PREINSCRIPTIONCOMP() {
             <option>Nutrition et Securités alimentaires (NSA)</option>
         </select>
         <select {...register("diplome")} defaultValue='Preinscription en Licence 3' className='outline-none w-[600px] border-b-2 py-1 text-lg'>
-            <option>Preinscription en Licence 2</option>
-            <option>Preinscription en Licence 3</option>
-            <option>Preinscription en Master 1</option>
-            <option>Preinscription en Master 2</option>
+             {option(getValues("filiere")||watch("filiere"))}
         </select>
        
         <div className='flex flex-col my-2 bg-gray-100'> 
