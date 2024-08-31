@@ -17,6 +17,7 @@ function request(method) {
   return (url, body) => {
     const requestOptions = {
       method,
+       credentials:"include"
     };
     if (body) {
       requestOptions.headers = {
